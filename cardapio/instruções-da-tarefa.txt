@@ -1,0 +1,3 @@
+Em dupla ou individualmente, criar um sistema de comanda virtual, em que ao selecionar os itens do pedido (entrada, prato principal, sobremesa e bebidas) adicione-os na comanda, juntamente com o número da mesa e o valor total da conta.
+Os itens adicionados na comanda devem ter a opção de serem excluídos individualmente, para isso, ao adicionar o item na comanda adicione também um botão "remover" (X).
+Além da programação também será avaliada a formatação do cardápio, bem como, o layout utilizado!

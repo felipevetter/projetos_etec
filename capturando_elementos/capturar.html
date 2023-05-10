@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interface Web II</title>
+</head>
+
+<body>
+    <style>
+        body {
+            background-color: #292732;
+        }
+
+        img {
+            width: 200px;
+            height: 200px;
+            margin: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            object-fit: cover; 
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-left: auto;
+            margin-right: auto;
+            max-width: 1200px;
+            margin-top: 50px;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+
+        p {
+            margin-top: -5px;
+            font-size: 21px;
+            color: #999;
+        }
+
+        h1 {
+            margin-top: 50px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-weight: bold;
+            color: #97afa2;
+        }
+
+        input[type="text"] {
+            padding: 8px;
+            width: 150px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            font-size: 16px;
+            margin-top: 10px;
+            transition-duration: 0.5s;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 15px;
+        }
+
+        .res {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: column;
+        }
+
+        .result {
+            margin-left: auto;
+            margin-right: auto;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        #pr {
+            margin-top: 10px;
+            margin-bottom: 1px;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            background-color: #fff;
+            width: 200px;
+        }
+    </style>
+
+    <h1 align="center">Personagens de Mr Robot</h1>
+
+    <div class="container">
+        <div class="img-caption">
+            <img src="https://img4.goodfon.com/wallpaper/nbig/8/45/mr-robot-elliot-alderson-rami-malek.jpg"
+                alt="Imagem 1">
+            <p id="p1">1</p>
+        </div>
+        <div class="img-caption">
+            <img src="http://pm1.narvii.com/6883/103c67190218ddeea0ef39f2a2143b7a85f28009r1-667-720v2_00.jpg"
+                alt="Imagem 2">
+            <p id="p2">2</p>
+        </div>
+        <div class="img-caption">
+            <img src="https://br.web.img2.acsta.net/r_1280_720/pictures/16/06/22/10/05/548835.jpg" alt="Imagem 3">
+            <p id="p3">3</p>
+        </div>
+        <div class="img-caption">
+            <img src="https://64.media.tumblr.com/1c05a2f714852e95a587d9f9f21895a6/1d03de6165c58658-ae/s1280x1920/5c0b27f6a8ecf754a5e89cfe51e9b5c7a92c711a.png"
+                alt="Imagem 4">
+            <p id="p4">4</p>
+        </div>
+    </div>
+    <div class="res">
+        <input type="text" placeholder="número da imagem" onkeyup="checkName('search')" id="numData">
+        <p id="result" class="result"></p>
+    </div>
+
+    <div class="res">
+        <p class="result" id="pr">Pesquisa Reversa</p>
+        <input type="text" placeholder="Nome do personagem" onkeyup="checkName('reverseSearch')" id="nameData">
+        <p id="resultPr" class="result"></p>
+    </div>
+    <script>
+
+        let names = ['Elliot Alderson', 'Darlene Alderson', 'Mr Robot', 'Tyrell Wellick']
+
+        function getNameByNumber(num) {
+            let nameIndex = parseInt(num);
+            if (names.length >= nameIndex && nameIndex >= 1 && num != '') {
+                return names[nameIndex - 1]
+            } else if (num == '') {
+                return ''
+            } else {
+                return 'Não há personagens com esse ID.'
+            }
+        }
+
+        function getNameByString(str) {
+            console.log(str);
+            for (let j = 0; j < names.length; j++) {
+                console.log(j);
+                if (names[j].toLowerCase() == str.toLowerCase()) {
+                    return 'ID: ' + (j + 1);
+                }
+            }
+            return '';
+        }
+
+        function checkName(type) {
+            if (type == 'search') {
+                let numData = document.getElementById('numData').value;
+                document.getElementById('result').innerHTML = getNameByNumber(numData)
+                if(numData != null && numData != '' && parseInt(numData) >= 1 && parseInt(numData) <= 4) {
+                    document.getElementById('p' + numData).innerHTML = getNameByNumber(numData);
+                    setTimeout(() => {
+                        document.getElementById('p' + numData).innerHTML = numData;
+                    }, 2500)
+                }
+            } else {
+                let nameData = document.getElementById('nameData').value;
+                document.getElementById('resultPr').innerHTML = getNameByString(nameData)
+                document.getElementById('p' + nameData).innerHTML = getNameByString(nameData);
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
